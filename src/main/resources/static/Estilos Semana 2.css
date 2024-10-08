@@ -5,3 +5,24 @@
   font-size: 50px;
     
 }
+
+.ejemploCajas {
+    border: 2px solid black;
+    /* 1 parámetro = aplica los 4 lados*/
+    /* padding-top: 10px;*/
+    
+    /* 2 parámetros = top/bottom - left/right*/
+    /*padding: 20px 10px;*/
+    
+    /* 3 parámetros = top - left/right - bottom*/
+    padding: 20px 10px 15px;
+    text-align: center;
+    margin: 0 auto;
+}
+a {
+    color: crimson;
+    background-color: aquamarine;
+    border: 2px solid aquamarine;
+    margin: 10px;
+    
+}   
