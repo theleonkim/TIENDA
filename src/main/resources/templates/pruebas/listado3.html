@@ -10,7 +10,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     </head>
     <body>
         <header th:replace="~{layout/plantilla :: header}"/>
+
         <section th:replace="~{pruebas/practica :: existencias}"/>
+        <section th:replace="~{pruebas/fragmentos :: existencias}"/>
+        <section th:replace="~{pruebas/fragmentos :: listadoProductos}"/>
+
         <footer th:replace="~{layout/plantilla :: footer}"/>       
     </body>
 </html>

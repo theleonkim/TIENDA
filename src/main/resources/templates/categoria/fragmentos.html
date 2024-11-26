@@ -1,18 +1,15 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+      >
     <head th:replace="~{layout/plantilla :: head}">
         <title>TechShop</title>
     </head>
     <body>
         <!-- 1 Sección para crear el boton de agregar... llamará a una ventana modal-->
         <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
-            <div class="container">
+            <div class="container" sec:authorize="hasRole('ROLE_ADMIN')">
                 <div class="row">
                     <div class="col-md-3">   
                         <button 
@@ -89,10 +86,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                             <td>[[${categoria.descripcion}]]</td>
                                             <td th:text="${categoria.activo} ? 'Activa' : 'Inactiva'" />
                                             <td><a th:href="@{/categoria/eliminar/}+${categoria.idCategoria}"
-                                                   class="btn btn-danger">
+                                                   class="btn btn-danger" sec:authorize="hasRole('ROLE_ADMIN')">
                                                     <i class="fas fa-trash"></i> [[#{accion.eliminar}]]</a>
                                                 <a th:href="@{/categoria/modificar/}+${categoria.idCategoria}"
-                                                   class="btn btn-success">
+                                                   class="btn btn-success" sec:authorize="hasRole('ROLE_ADMIN')">
                                                     <i class="fas fa-pencil"></i> [[#{accion.actualizar}]]</a></td></tr>
                                     </tbody>
                                 </table>
@@ -124,7 +121,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                           th:object="${categoria}"
                           class="was-validated"                          
                           enctype="multipart/form-data">
-                        <input type="hidden" name="idCategoria" th:field="*{idCategoria}"/>
+                        <input type="hidden" name="categoria" th:field="*{idCategoria}"/>
                         <input type="hidden" name="rutaImagen" th:field="*{rutaImagen}"/>
                         <section th:replace="~{categoria/fragmentos :: botonesEditar}"/>
                         <div id=details>
